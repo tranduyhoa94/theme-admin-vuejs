@@ -1,0 +1,44 @@
+step 1 : run /etc/apache2/sites-availble (sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf) copy file 000-default.conf create file example.com.cof example is name tdhoa.com.cof
+
+step 2 : delete domen ao sudo rm example.com.conf
+
+step 3 : sudo nano /etc/apache2/sites-available/example.com.conf
+
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    ServerName example.com
+	ServerAlias www.example.com
+    DocumentRoot /var/www/html (Link to project of you)
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    <Directory "/home/abyf0x/Project/participants/public/">
+        AllowOverride All
+        Order allow,deny
+        allow from all
+        require all granted
+    </Directory>
+</VirtualHost>
+
+
+
+sudo a2ensite example.com.conf
+
+sudo service apache2 restart
+
+sudo nano /etc/hosts
+
+127.0.0.1 example.com
+
+step 4 : sudo a2enmod rewrite
+
+step 5 : /etc/apache2/ports.conf Listen 8080
+
+	install if not errro sudo apt install libapache2-mod-php7.2 libapache2-mod-php
+
+sudo a2enmod php7.2 
+
+sudo service apache2 restart
+
+
+
+
